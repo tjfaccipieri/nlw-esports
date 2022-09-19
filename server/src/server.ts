@@ -24,9 +24,17 @@ app.get('/games', async (request, response) => {
 });
 
 app.get('/games/:id', async (request, response) => {
-  const gameId = request.params.id
+  const gameId: string = request.params.id
 
   const game = await prisma.game.findUniqueOrThrow({
+    // select:{
+    //   id: true,
+    //   title: true,
+    //   bannerUrl:true,
+    // },
+    include: {
+      ads: true
+    },
     where: {id: gameId}
   })
   return response.status(200).json(game)
