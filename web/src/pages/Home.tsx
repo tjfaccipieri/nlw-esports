@@ -40,9 +40,9 @@ export function Home() {
 
       <div className="grid grid-cols-6 gap-6 mt-16">
         {games.map((game) => (
-          <Link to={`/gameDetail/${game.id}`}>
+          <Link to={`/gameDetails/${game.id}`} key={game.id}>
             <GameBanner
-              key={game.id}
+              
               bannerUrl={game.bannerUrl}
               title={game.title}
               adsCount={game._count.ads}
